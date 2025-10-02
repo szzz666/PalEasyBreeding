@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>幻兽帕鲁配种计算器</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+  </head>
+  <body>
+    <div class="loading-overlay" id="loadingOverlay">
+      <div>正在加载帕鲁数据...</div>
+    </div>
+
+    <div class="container">
+      <div class="main-content">
+        <div class="filter-bar-container">
+          <div class="breeding-section">
+            <div class="frame-select">
+              <label for="parent1">配种一</label>
+              <div class="search-container">
+                <div class="input-image" id="inputImage1"></div>
+                <input
+                  type="text"
+                  class="search-input"
+                  id="search1"
+                  placeholder="选择父代帕鲁"
+                />
+                <div class="dropdown-arrow" id="arrow1">▼</div>
+                <div class="dropdown-list" id="dropdown1"></div>
+              </div>
+              <select id="parent1" style="display: none">
+                <option value="">未选择</option>
+              </select>
+            </div>
+
+            <div class="frame-select">
+              <label for="parent2">配种二</label>
+              <div class="search-container">
+                <div class="input-image" id="inputImage2"></div>
+                <input
+                  type="text"
+                  class="search-input"
+                  id="search2"
+                  placeholder="选择父代帕鲁"
+                />
+                <div class="dropdown-arrow" id="arrow2">▼</div>
+                <div class="dropdown-list" id="dropdown2"></div>
+              </div>
+              <select id="parent2" style="display: none">
+                <option value="">未选择</option>
+              </select>
+            </div>
+
+            <!-- 配种代数选择器 -->
+            <div
+              id="generationSelector"
+              class="frame-select generation-selector hidden"
+            >
+              <label for="generationSelect">亲属关系</label>
+              <div class="search-container">
+                <input
+                  type="text"
+                  class="search-input"
+                  id="searchGeneration"
+                  placeholder="选择亲属关系"
+                  readonly
+                />
+                <div class="dropdown-arrow" id="arrowGeneration">▼</div>
+                <div class="dropdown-list" id="dropdownGeneration"></div>
+              </div>
+              <select id="generationSelect" style="display: none">
+                <option value="1">直系</option>
+                <option value="2">隔代</option>
+              </select>
+            </div>
+
+            <div class="frame-select">
+              <label for="resultSelect">配种结果</label>
+              <div class="search-container">
+                <div class="input-image" id="inputImageResult"></div>
+                <input
+                  type="text"
+                  class="search-input"
+                  id="searchResult"
+                  placeholder="选择子代帕鲁"
+                />
+                <div class="dropdown-arrow" id="arrowResult">▼</div>
+                <div class="dropdown-list" id="dropdownResult"></div>
+              </div>
+              <select id="resultSelect" style="display: none">
+                <option value="">未选择</option>
+              </select>
+            </div>
+
+            <div class="frame-select">
+              <button class="frame-button reset danger-btn" id="resetBtn">
+                清空
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pal-info-display hidden" id="palInfoDisplay">
+          <!-- 帕鲁筛选控件 -->
+          <div class="filter-controls hidden" id="filterControls">
+            <!-- 剔除帕鲁部分 -->
+            <div class="filter-section">
+              <div class="filter-row">
+                <div class="filter-section-title">剔除帕鲁</div>
+                <div class="search-container exclude-search">
+                  <input
+                    type="text"
+                    class="search-input exclude-input filter-input"
+                    id="excludePalSearch"
+                    placeholder="选择要剔除的帕鲁"
+                  />
+                  <div class="dropdown-arrow" id="excludeArrow">▼</div>
+                  <div
+                    class="dropdown-list exclude-dropdown"
+                    id="excludeDropdown"
+                  ></div>
+                </div>
+                <div class="selected-excludes" id="selectedExcludes">
+                  <!-- 已选择的剔除帕鲁将显示在这里 -->
+                </div>
+                <button class="clear-all-btn danger-btn" id="clearAllExcludes">
+                  清空剔除
+                </button>
+              </div>
+            </div>
+
+            <!-- 指定帕鲁部分 - 只在隔代配种时显示 -->
+            <div class="filter-section hidden" id="selectPalSection">
+              <div class="filter-row">
+                <div class="filter-section-title">指定帕鲁</div>
+                <div class="search-container select-search">
+                  <input
+                    type="text"
+                    class="search-input select-input filter-input"
+                    id="selectPalSearch"
+                    placeholder="选择要指定的帕鲁"
+                  />
+                  <div class="dropdown-arrow" id="selectArrow">▼</div>
+                  <div
+                    class="dropdown-list select-dropdown"
+                    id="selectDropdown"
+                  ></div>
+                </div>
+                <div class="selected-selects" id="selectedSelects">
+                  <!-- 已选择的指定帕鲁将显示在这里 -->
+                </div>
+                <button class="clear-all-btn danger-btn" id="clearAllSelects">
+                  清空选定
+                </button>
+              </div>
+            </div>
+
+            <!-- 结果统计 -->
+            <div class="filter-section">
+              <span class="result-count" id="resultCount"></span>
+            </div>
+          </div>
+
+          <!-- 统一的配种结果显示区域 -->
+          <div class="breeding-results-container" id="breedingResultsContainer">
+            <!-- 配种结果将动态插入到这里 -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/breeding-calculator.js"></script>
+    <script src="js/pal-filter-manager.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/result-renderer.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
