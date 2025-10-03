@@ -197,17 +197,6 @@ class ResultRenderer {
     resultDiv.className = "breeding-result";
     const defaultImageSrc = this.getDefaultImageSrc();
 
-    const searchBtn = `<button class="bing-search-btn" onclick="searchPal('${child.chinese_name}')" title="在必应搜索">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
-            </svg>
-          </button>
-          
-          <button class="bing-search-btn" onclick="openWiki('${child.chinese_name}')" title="打开Wiki">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-            </svg>
-          </button>`;
 
     resultDiv.innerHTML = `
     <div class="breeding-formula">
@@ -217,7 +206,19 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${parent1.chinese_name}${searchBtn}</span>
+          <span class="pal-chinese">${parent1.chinese_name}
+          <button class="bing-search-btn" onclick="searchPal('${parent1.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${parent1.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>
+          </span>
+          
           ${
         g1
             ? `<span class="gender-symbol ${g1}" style="display: inline;">${
@@ -235,7 +236,18 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${parent2.chinese_name} ${searchBtn}</span>
+          <span class="pal-chinese">${parent2.chinese_name}
+          <button class="bing-search-btn" onclick="searchPal('${parent2.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${parent2.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>
+          </span>
           ${
         g2
             ? `<span class="gender-symbol ${g2}" style="display: inline;">${
@@ -253,7 +265,18 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${child.chinese_name}${searchBtn}</span>
+          <span class="pal-chinese">${child.chinese_name}
+          <button class="bing-search-btn" onclick="searchPal('${child.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${child.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>
+          </span>
           
         </div>
       </div>
@@ -274,17 +297,6 @@ class ResultRenderer {
     const defaultImageSrc = this.getDefaultImageSrc();
     const step1 = combination.generationPath.step1;
     const step2 = combination.generationPath.step2;
-    const searchBtn = `<button class="bing-search-btn" onclick="searchPal('${step1.parent1.chinese_name}')" title="在必应搜索">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
-            </svg>
-          </button>
-          
-          <button class="bing-search-btn" onclick="openWiki('${step1.parent1.chinese_name}')" title="打开Wiki">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-            </svg>
-          </button>`;
     resultDiv.innerHTML = `
       <div class="breeding-formula">
         <div class="pal-card">
@@ -293,7 +305,18 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.parent1.chinese_name}${searchBtn}</span>
+            <span class="pal-chinese">${step1.parent1.chinese_name}
+            <button class="bing-search-btn" onclick="searchPal('${step1.parent1.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${step1.parent1.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>
+          </span>
             
           </div>
         </div>
@@ -304,7 +327,16 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.parent2.chinese_name}${searchBtn}</span>
+            <span class="pal-chinese">${step1.parent2.chinese_name}<button class="bing-search-btn" onclick="searchPal('${step1.parent2.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${step1.parent2.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button></span>
           </div>
         </div>
         <div class="math-symbol">=</div>
@@ -314,7 +346,16 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.child.chinese_name}${searchBtn}</span>
+            <span class="pal-chinese">${step1.child.chinese_name}<button class="bing-search-btn" onclick="searchPal('${step1.child.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${step1.child.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button></span>
            
           </div>
         </div>
@@ -325,7 +366,16 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step2.parent2.chinese_name}${searchBtn}</span>
+            <span class="pal-chinese">${step2.parent2.chinese_name}<button class="bing-search-btn" onclick="searchPal('${step2.parent2.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${step2.parent2.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button></span>
             
           </div>
         </div>
@@ -336,7 +386,16 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step2.child.chinese_name}${searchBtn}</span>
+            <span class="pal-chinese">${step2.child.chinese_name}<button class="bing-search-btn" onclick="searchPal('${step2.child.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          <button class="bing-search-btn" onclick="openWiki('${step2.child.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button></span>
    
           </div>
         </div>
