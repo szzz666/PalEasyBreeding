@@ -1,3 +1,25 @@
+.bing-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 0;
+  color: #666;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.bing-search-btn:hover {
+  color: #0067b8; /* 必应主题色 */
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bing-search-btn svg {
+  display: block;
+}
+
 /* 帕鲁配种计算器样式文件 */
 
 * {

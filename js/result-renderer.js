@@ -197,6 +197,18 @@ class ResultRenderer {
     resultDiv.className = "breeding-result";
     const defaultImageSrc = this.getDefaultImageSrc();
 
+    const searchBtn = `<button class="bing-search-btn" onclick="searchPal('${child.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          
+          <button class="bing-search-btn" onclick="openWiki('${child.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>`;
+
     resultDiv.innerHTML = `
     <div class="breeding-formula">
       <div class="pal-card">
@@ -205,14 +217,15 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${parent1.chinese_name}</span>
+          <span class="pal-chinese">${parent1.chinese_name}${searchBtn}</span>
           ${
-            g1
-              ? `<span class="gender-symbol ${g1}" style="display: inline;">${
-                  g1 === "male" ? "♂" : "♀"
-                }</span>`
-              : ""
-          }
+        g1
+            ? `<span class="gender-symbol ${g1}" style="display: inline;">${
+                g1 === "male" ? "♂" : "♀"
+            }</span>`
+            : ""
+    }
+          
         </div>
       </div>
       <div class="math-symbol">+</div>
@@ -222,14 +235,15 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${parent2.chinese_name}</span>
+          <span class="pal-chinese">${parent2.chinese_name} ${searchBtn}</span>
           ${
-            g2
-              ? `<span class="gender-symbol ${g2}" style="display: inline;">${
-                  g2 === "male" ? "♂" : "♀"
-                }</span>`
-              : ""
-          }
+        g2
+            ? `<span class="gender-symbol ${g2}" style="display: inline;">${
+                g2 === "male" ? "♂" : "♀"
+            }</span>`
+            : ""
+    }
+         
         </div>
       </div>
       <div class="math-symbol">=</div>
@@ -239,7 +253,8 @@ class ResultRenderer {
              class="pal-image"
              onerror="this.src='${defaultImageSrc}'">
         <div class="pal-name-container">
-          <span class="pal-chinese">${child.chinese_name}</span>
+          <span class="pal-chinese">${child.chinese_name}${searchBtn}</span>
+          
         </div>
       </div>
     </div>
@@ -252,13 +267,24 @@ class ResultRenderer {
    * 创建二代配种结果元素
    */
   createMultiGenerationBreedingResult(combination) {
+
     const resultDiv = document.createElement("div");
     resultDiv.className = "breeding-result multi-generation";
 
     const defaultImageSrc = this.getDefaultImageSrc();
     const step1 = combination.generationPath.step1;
     const step2 = combination.generationPath.step2;
-
+    const searchBtn = `<button class="bing-search-btn" onclick="searchPal('${step1.parent1.chinese_name}')" title="在必应搜索">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M10 2a8 8 0 018 8c0 1.848-.627 3.55-1.68 4.905l3.387 3.388a1 1 0 01-1.414 1.414l-3.388-3.387A7.965 7.965 0 0110 18a8 8 0 110-16zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+          </button>
+          
+          <button class="bing-search-btn" onclick="openWiki('${step1.parent1.chinese_name}')" title="打开Wiki">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </button>`;
     resultDiv.innerHTML = `
       <div class="breeding-formula">
         <div class="pal-card">
@@ -267,7 +293,8 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.parent1.chinese_name}</span>
+            <span class="pal-chinese">${step1.parent1.chinese_name}${searchBtn}</span>
+            
           </div>
         </div>
         <div class="math-symbol">+</div>
@@ -277,7 +304,7 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.parent2.chinese_name}</span>
+            <span class="pal-chinese">${step1.parent2.chinese_name}${searchBtn}</span>
           </div>
         </div>
         <div class="math-symbol">=</div>
@@ -287,7 +314,8 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step1.child.chinese_name}</span>
+            <span class="pal-chinese">${step1.child.chinese_name}${searchBtn}</span>
+           
           </div>
         </div>
         <div class="math-symbol">+</div>
@@ -297,7 +325,8 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step2.parent2.chinese_name}</span>
+            <span class="pal-chinese">${step2.parent2.chinese_name}${searchBtn}</span>
+            
           </div>
         </div>
         <div class="math-symbol">=</div>
@@ -307,7 +336,8 @@ class ResultRenderer {
                class="pal-image"
                onerror="this.src='${defaultImageSrc}'">
           <div class="pal-name-container">
-            <span class="pal-chinese">${step2.child.chinese_name}</span>
+            <span class="pal-chinese">${step2.child.chinese_name}${searchBtn}</span>
+   
           </div>
         </div>
       </div>
@@ -363,4 +393,10 @@ class ResultRenderer {
   getDefaultImageSrc() {
     return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNlOWVjZWYiLz4KPHN2ZyB4PSIyMCIgeT0iMjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2Yzc1N2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiByeD0iMiIgcnk9IjIiLz4KPGNpcmNsZSBjeD0iOC41IiBjeT0iOC41IiByPSIxLjUiLz4KPHBvbHlsaW5lIHBvaW50cz0iMjEsMTUgMTYsMTAgNSwyMSIvPgo8L3N2Zz4KPC9zdmc+";
   }
+}
+function searchPal(palName) {
+  window.open('https://www.bing.com/search?q=' + encodeURIComponent("幻兽帕鲁 " + palName), '_blank');
+}
+function openWiki(palName) {
+  window.open('https://wiki.biligame.com/palworld/' + encodeURIComponent(palName), '_blank');
 }
